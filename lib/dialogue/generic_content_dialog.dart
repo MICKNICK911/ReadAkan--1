@@ -6,7 +6,7 @@ Future<T?>showGenericDialogContent<T> (
   {required BuildContext context,
   required bool dark,
   //required Widget content,
-  //required DialogOptionBuilder optionBuilder}
+  //required DialogOptionBuilder optionBuilder
   }
   ) {
     const fontcolorbright = Color.fromARGB(255, 67, 1, 52);
@@ -19,11 +19,12 @@ Future<T?>showGenericDialogContent<T> (
       builder: (context) {
         return AlertDialog(
           //title: Text(title),
+          backgroundColor: dark != true?Colors.amberAccent:fontcolorbright,
           contentPadding: const EdgeInsets.all(0),
           content: Card(
-                                elevation: 5,
+                                //elevation: 5,
                                 color: Colors.transparent,
-                                margin: const EdgeInsets.fromLTRB(10, 0, 10, 8),
+                                //margin: const EdgeInsets.fromLTRB(10, 0, 10, 8),
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(30),
@@ -44,40 +45,57 @@ Future<T?>showGenericDialogContent<T> (
                                           decoration: BoxDecoration(
                                             image: DecorationImage(image: dark !=true? const AssetImage("assets/images/2.jpg"):const AssetImage("assets/images/6.jpg") ,
                                               fit: BoxFit.fill),
-                                                borderRadius: const BorderRadius.only( 
-                                                  bottomLeft: Radius.circular(20),
-                                                  bottomRight: Radius.circular(20),
-                                                  topLeft: Radius.circular(20),
-                                                  topRight: Radius.circular(20),
+                                              //   borderRadius: const BorderRadius.only( 
+                                              //     bottomLeft: Radius.circular(20),
+                                              //     bottomRight: Radius.circular(20),
+                                              //     topLeft: Radius.circular(20),
+                                              //     topRight: Radius.circular(20),
                                               
-                                              ),
+                                              // ),
                                             ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(0.8),
+                                            padding: const EdgeInsets.all(8),
                                             child: Container(
                                               decoration:  BoxDecoration(
-                                                  color: dark !=true? Colors.amberAccent :  const Color.fromARGB(255, 81, 1, 60),
-                                                  borderRadius: const BorderRadius.only(
-                                                  bottomLeft: Radius.circular(30),
-                                                  bottomRight: Radius.circular(30),
-                                                  topLeft: Radius.circular(30),
-                                                  topRight: Radius.circular(30),
+                                                  color: dark != true? Colors.amberAccent :  const Color.fromARGB(255, 81, 1, 60),
+                                                //   borderRadius: const BorderRadius.only(
+                                                //   bottomLeft: Radius.circular(30),
+                                                //   bottomRight: Radius.circular(30),
+                                                //   topLeft: Radius.circular(30),
+                                                //   topRight: Radius.circular(30),
                                                 
-                                                ),
+                                                // ),
                                               ),
-                                              child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(8.0),
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
+                                                  
                                                   children: [
-                                                    Text("Hello world",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                    fontSize: 10,
-                                                    color:dark !=true? fontcolorbright: fontcolordark,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Times New Roman',
-                                                  ),),
-                                            
+                                                    const SizedBox(
+                                                      height: 50,
+                                                      child: Center(child: Text("Title")),
+                                                    ),
+                                                
+                                                    //SizedBox(height: 100,),
+                                                
+                                                    Expanded(
+                                                      child: Center(
+                                                        child: Text("Purchase ReadTwi 2 at a very cheap price here:",
+                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(
+                                                        fontSize: 20,
+                                                        color:dark !=true? fontcolorbright: fontcolordark,
+                                                        fontWeight: FontWeight.w600,
+                                                        fontFamily: 'Times New Roman',
+                                                                                                      ),),
+                                                      ),
+                                                    ),
+                                                
+                                                    const SizedBox(
+                                                      height: 50,
+                                                      child: Center(child: Text("Title")),
+                                                    ),
                                                   ],
                                                 ),
                                               ),

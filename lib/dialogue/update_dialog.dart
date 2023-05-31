@@ -16,7 +16,7 @@ Future<bool> showUpdateDialog(BuildContext context){
 Future<void> showUpdateDialogCC(BuildContext context, {required bool dark}){
   return showGenericDialogContent<void>(
     context: context, 
-    dark: dark 
+    dark: dark,
     // optionBuilder: () => {
     //   "Cancel": false,
     //   "Continue": true
