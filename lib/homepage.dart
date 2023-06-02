@@ -18,7 +18,17 @@ class _MyHomeAppState extends State<MyHomeApp> {
 
   @override
   Widget build(BuildContext context){
-    return BlocBuilder<DisplayModeBloc, DisplayModeState>(
+    return BlocConsumer<DisplayModeBloc, DisplayModeState>(
+      listener: ((context, state) async {
+        if (state is CallState) {
+          //closes the update alert dialog
+           Navigator.of(context).pop();
+           
+          if (state.alert == "unsuccessful") {
+            await showErrorCallDialog(context);
+          }
+        }
+      }),
       builder: (context, state) { 
 
         bool dark = state.stateValue;
@@ -29,15 +39,21 @@ class _MyHomeAppState extends State<MyHomeApp> {
         toolbarHeight: 120,
         backgroundColor: const Color.fromARGB(255, 74, 7, 45),
         //centerTitle: true,
-        title: const Padding(
-          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-          child: Text("AKWAABA",
-                              style: TextStyle(
-                              fontSize: 50,
-                              color: Color.fromARGB(255, 242, 238, 234),
-                              fontWeight: FontWeight.w900,
-                              fontFamily: 'courier',
-                            ),),
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
+          child: Container(
+          height: 90,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/images/intrologo2.png") ,
+            fit: BoxFit.fill),
+              // borderRadius: BorderRadius.only(
+              //                                 bottomLeft: Radius.circular(80),
+              //                                 bottomRight: Radius.circular(180),
+              //                               ),
+                                          ),
+         ),
+
         ),
         shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -170,9 +186,15 @@ class _MyHomeAppState extends State<MyHomeApp> {
 
                                 GestureDetector(
                                   onTap: () async {
-                                    final shouldDelete = await showUpdateDialog(context);
-                                      if (shouldDelete) {
-                                        //onDeleteNote(note);
+                                    final shouldContinue = await showUpdateDialog(context);
+                                      if (shouldContinue) {
+                                        // ignore: use_build_context_synchronously
+                                        await showUpdateDialogCC(context,
+                                                                 dark: dark,
+                                                                 call:() {
+                                                                 context.read<DisplayModeBloc>().add(
+                                                                 CallEvent(!dark));
+                                                                },);
                                       }
                                   },
                                   child: ContentWidget(dark: dark,
@@ -182,11 +204,16 @@ class _MyHomeAppState extends State<MyHomeApp> {
                                 ),
                                 GestureDetector(
                                   onTap: () async {
-                                     //final shouldDelete = await showUpdateDialogCC(context, dark: dark);
-                                     await showUpdateDialogCC(context, dark: dark);
-                                      // if (shouldDelete) {
-                                      //   //onDeleteNote(note);
-                                      // }
+                                     final shouldContinue = await showUpdateDialog(context);
+                                      if (shouldContinue) {
+                                        // ignore: use_build_context_synchronously
+                                        await showUpdateDialogCC(context,
+                                                                 dark: dark,
+                                                                 call:() {
+                                                                 context.read<DisplayModeBloc>().add(
+                                                                 CallEvent(!dark));
+                                                                },);
+                                      }
                                   },
                                   child: ContentWidget(dark: dark,
                                                 leadnum: "7",

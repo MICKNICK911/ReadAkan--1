@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 @immutable
 abstract class DisplayModeEvent {
@@ -35,4 +34,10 @@ class DoubleConsonantsEvent extends DisplayModeEvent {
 //* Route Event #6
 class HomePageEvent extends DisplayModeEvent {
   const HomePageEvent(bool value) : super(value);
+}
+
+//* Route Event #7
+class CallEvent extends DisplayModeEvent {
+  const CallEvent(bool value) : super(value);
+
 }

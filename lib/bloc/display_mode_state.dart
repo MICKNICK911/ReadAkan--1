@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 @immutable
 abstract class DisplayModeState{
@@ -34,4 +33,10 @@ class DoubleConsonantsState extends DisplayModeState {
 //! Route #6
 class HomePageState extends DisplayModeState {
   const HomePageState(bool outputValue) : super(outputValue);
+}
+
+//! Route #7
+class CallState extends DisplayModeState {
+  CallState(bool outputValue, {required this.alert}) : super(outputValue);
+  String alert;
 }

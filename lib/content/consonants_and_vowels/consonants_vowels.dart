@@ -72,9 +72,9 @@ class _MixturesState extends State<Mixtures> {
               title: Text(widget.title,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                            fontSize: 35,
+                            fontSize: 24,
                             color:dark !=true? const Color.fromARGB(255, 237, 217, 206): const Color.fromARGB(255, 139, 227, 244),
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w800,
                             fontFamily: 'Times New Roman',
                           ),
                                 ),

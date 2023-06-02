@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnakanone/bloc/display_mode_event.dart';
 import 'package:learnakanone/bloc/display_mode_state.dart';
+import "package:url_launcher/url_launcher.dart";
 
 //? BLOC LOGIC
 class DisplayModeBloc extends Bloc<DisplayModeEvent, DisplayModeState> {
@@ -79,16 +79,37 @@ class DisplayModeBloc extends Bloc<DisplayModeEvent, DisplayModeState> {
       )
     );
 
-    // on<ChangeModeEvent>(((event, emit) {
-    //   final currentMode = event.value;
-    //   if (currentMode == false) {
-    //     emit(const DarkModeState(true));
-    //   } else {
-    //     emit(const LightModeState(false));
-    //      }
-    //     }
-    //   )
-    // );
+    on<CallEvent>(((event, emit) async {
+      var url = Uri.parse("tel:+233545800158");
+      final currentMode = event.value;
+
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+
+         if (currentMode == false) {
+        emit(CallState(true, alert: "successful"));
+      } else {
+        emit(CallState(false, alert: "successful"));
+         }
+
+      } else {
+         if (currentMode == false) {
+        emit(CallState(true, alert: "unsuccessful"));
+      } else {
+        emit(CallState(false, alert: "unsuccessful"));
+         }
+        throw "Operation Failed";    
+      }
+
+      
+      if (currentMode == false) {
+        emit(const HomePageState(true));
+      } else {
+        emit(const HomePageState(false));
+         }
+        }
+      )
+    );
 
   }
 }

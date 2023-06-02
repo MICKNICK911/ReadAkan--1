@@ -58,27 +58,6 @@ class Tabhy extends StatelessWidget{
                               sound3: "hyi"
                             ),
 
-                            //  TabListRow(
-                            //   dark: dark,
-                            //   word2:"o",
-                            //   word1:letter,
-                            //   word3:"${letter}o",
-                            // ),
-
-                            // TabListRow(
-                            //   dark: dark,
-                            //   word2:"u",
-                            //   word1:letter,
-                            //   word3:"${letter}u",
-                            // ),
-
-                            //  TabListRow(
-                            //   dark: dark,
-                            //   word2:"ɔ",
-                            //   word1:letter,
-                            //   word3:"$letterɔ",
-                            // ),
-
                            TabListRow(
                               dark: dark,
                               word2:"ɛ",

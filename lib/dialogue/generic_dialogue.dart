@@ -10,6 +10,7 @@ Future<T?>showGenericDialogT<T> (
   ) {
     final options = optionBuilder();
     return showDialog<T>(
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(
